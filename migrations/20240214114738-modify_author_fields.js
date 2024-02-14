@@ -1,44 +1,45 @@
 'use strict';
 
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up (queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.changeColumn('Articles', 'id', {
+      queryInterface.changeColumn('Authors', 'id', {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
       }),
-      queryInterface.changeColumn('Articles', 'name', {
+      queryInterface.changeColumn('Authors', 'name', {
         type: Sequelize.STRING,
         allowNull: false
       }),
-      queryInterface.changeColumn('Articles', 'slug', {
+      queryInterface.changeColumn('Authors', 'slug', {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
       }),
-      queryInterface.changeColumn('Articles', 'image', {
+      queryInterface.changeColumn('Authors', 'image', {
         type: Sequelize.STRING,
         allowNull: false
       }),
-      queryInterface.changeColumn('Articles', 'body', {
+      queryInterface.changeColumn('Authors', 'body', {
         type: Sequelize.TEXT,
         allowNull: false
       }),
-      queryInterface.changeColumn('Articles', 'published', {
+      queryInterface.changeColumn('Authors', 'published', {
         type: Sequelize.DATE,
         allowNull: false
       }),
-      queryInterface.changeColumn('Articles', 'author_id', {
+      queryInterface.changeColumn('Authors', 'author_id', {
         type: Sequelize.INTEGER
       })
     ])
   },
 
-  down (queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.dropTable('Articles')
+      queryInterface.dropTable('Authors')
     ])
   }
 };
