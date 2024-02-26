@@ -1,33 +1,20 @@
 'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up (queryInterface, Sequelize) {
     return Promise.all([
       queryInterface.bulkInsert('Authors', [{
-        name: 'Introduction to Ashtanga',
-        slug: 'Introduction to ashtanga',
-        image: 'ashtanga.jpg',
-        body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',
-        published: '2020-01-08 15:02:30',
+        name: 'Ashley Galvin',
         createdAt: new Date(),
         updatedAt: new Date()
       }]),
       queryInterface.bulkInsert('Authors', [{
-        name: 'Morning vinyasa flow routine',
-        slug: 'morning-vinyasa-flow-routine',
-        image: 'morning.jpg',
-        body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',
-        published: '2020-04-14 15:02:41',
+        name: 'Patrick Beach',
         createdAt: new Date(),
         updatedAt: new Date()
       }]),
       queryInterface.bulkInsert('Authors', [{
-        name: 'Secrets of a yoga teacher',
-        slug: 'secrets-of-a-yoga-teacher',
-        image: 'yoga-teacher.jpg',
-        body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',
-        published: '2060-05-28 15:02:55',
+        name: 'MacKenzie Miller',
         createdAt: new Date(),
         updatedAt: new Date()
       }]),
@@ -35,6 +22,6 @@ module.exports = {
   },
 
   down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('Authors', null, {})
+    return queryInterface.bulkDelete('Authors', null, {});
   }
 };

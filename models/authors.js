@@ -11,6 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.Article, {
+        foreignKey: {
+          name: 'AuthorId',
+          field: 'author_id',
+        }
+      })
     }
   }
   Authors.init({
@@ -24,24 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    slug: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    body: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    published: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    author_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Authors',
