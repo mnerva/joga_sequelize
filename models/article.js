@@ -11,12 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Authors, {
-        foreignKey: {
-          name: 'AuthorId',
-          field: 'author_id',
-        }
-      })
+      Article.belongsTo(models.Author, {
+        foreignKey: 'author_id',
+        field: 'author_id',
+      });
+      Article.belongsToMany(models.Tags, {
+        foreignKey: 'articleId',
+        through: 'ArticleTags',
+      });
     }
   }
   Article.init({
@@ -47,10 +49,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false
     },
-    author_id: DataTypes.INTEGER
+    author_id: {
+      type: DataTypes.INTEGER
+    }
   }, {
     sequelize,
     modelName: 'Article',
+    tableName: 'articles',
+    freezeTableName: true,
   });
   return Article;
 };
